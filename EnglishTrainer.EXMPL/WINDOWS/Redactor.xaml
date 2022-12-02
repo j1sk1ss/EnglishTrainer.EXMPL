@@ -3,10 +3,41 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:EnglishTrainer.EXMPL.WINDOWS"
+        ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Redactor" Height="450" Width="800">
+        Title="Редактор задания" Height="450" Width="450">
     <Grid>
-        
+        <RichTextBox x:Name="QuestBody"
+                     Height="400"
+                     Width="425"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     Margin="0,10,0,0">
+        </RichTextBox>
+        <Button Height="25"
+                Width="200"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0,0,12,8"
+                FontFamily="Comic Sans MS"
+                Click="SaveQuest">
+            СОХРАНИТЬ
+        </Button>
+        <ComboBox x:Name="Difficult"
+                  Height="25"
+                  Width="200"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Bottom"
+                  Margin="13,0,0,8"
+                  FontFamily="Comic Sans MS"
+                  Text="1 уровень"
+                  SelectionChanged="ViewQuests">
+            <ComboBoxItem FontFamily="Comic Sans MS"
+            > 1 уровень </ComboBoxItem>
+            <ComboBoxItem FontFamily="Comic Sans MS"
+            > 2 уровень </ComboBoxItem>
+            <ComboBoxItem FontFamily="Comic Sans MS"
+            > 3 уровень </ComboBoxItem>
+        </ComboBox>
     </Grid>
 </Window>

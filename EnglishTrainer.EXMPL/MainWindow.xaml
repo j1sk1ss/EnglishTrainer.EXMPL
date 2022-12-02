@@ -3,10 +3,65 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EnglishTrainer.EXMPL"
+        ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Тренажёр" Height="450" Width="450">
     <Grid>
-
+        <Label x:Name="UserName"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Margin="0,0,0,350"
+               FontSize="25"
+               FontFamily="Comic Sans MS">
+            Приветсвую вас, ПОЛЬЗОВАТЕЛЬ
+        </Label>
+        <Button Height="25"
+                Width="300"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0,0,0,200"
+                FontFamily="Comic Sans MS"
+                Click="StartTrainer">
+            НАЧАТЬ ТРЕНИРОВКУ
+        </Button>
+        <Button Height="25"
+                Width="300"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0,0,0,100"
+                FontFamily="Comic Sans MS"
+                Click="ChangeQuest">
+            РЕДАКТИРОВАТЬ ЗАДАНИЯ
+        </Button>
+        <Button Height="25"
+                Width="300"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0,0,0,0"
+                FontFamily="Comic Sans MS"
+                Click="Registration">
+            РЕГИСТРАЦИЯ
+        </Button>
+        <Button Height="25"
+                Width="300"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0,350,0,0"
+                FontFamily="Comic Sans MS"
+                Click="Leaders">
+            ТАБЛИЦА ЛИДЕРОВ
+        </Button>
+        <Line X1 = "40" Y1 = "90"
+              X2 = "40" Y2 = "270"
+              Stroke="Black"></Line>
+        <Line X1 = "410" Y1 = "90"
+              X2 = "410" Y2 = "270"
+              Stroke="Black"></Line>
+        <Line X1 = "410" Y1 = "90"
+              X2 = "40" Y2 = "90"
+              Stroke="Black"></Line>
+        <Line X1 = "410" Y1 = "270"
+              X2 = "40" Y2 = "270"
+              Stroke="Black"></Line>
     </Grid>
 </Window>

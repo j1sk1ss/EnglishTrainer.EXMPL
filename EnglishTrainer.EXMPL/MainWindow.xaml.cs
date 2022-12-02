@@ -1,28 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using EnglishTrainer.EXMPL.DATA;
+using EnglishTrainer.EXMPL.INTERFACES;
+using EnglishTrainer.EXMPL.OBJECTS;
+using EnglishTrainer.EXMPL.WINDOWS;
 
-namespace EnglishTrainer.EXMPL
-{
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
+namespace EnglishTrainer.EXMPL {
+    public partial class MainWindow {
+        public MainWindow() {
+            try {
+                InitializeComponent();
+                User = new User();
+                UsersData.Users.Add(User);
+            }
+            catch (Exception e) {
+                MessageBox.Show($"{e}");
+            }
         }
+        public User User { get; set; }
+
+        private void StartTrainer(object sender, RoutedEventArgs e) => new Trainer(new List<IQuest>(User.Level switch {
+            Level.Junior => Quests.LightQuests,
+            Level.Middle => Quests.MiddleQuests,
+            Level.Senior => Quests.HardQuests,
+            _ => Quests.LightQuests
+        }), User).Show();
+
+        private void ChangeQuest(object sender, RoutedEventArgs e) => new Redactor().Show();
+        private void Registration(object sender, RoutedEventArgs e) => new Registration(this).Show();
+        private void Leaders(object sender, RoutedEventArgs e) => new TopPlayers().Show();
     }
 }

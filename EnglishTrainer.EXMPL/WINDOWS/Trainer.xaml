@@ -3,10 +3,89 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:EnglishTrainer.EXMPL.WINDOWS"
+        ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Trainer" Height="450" Width="800">
+        Title="Тренер" Height="450" Width="800">
     <Grid>
-        
+        <Grid Height="400"
+              Width="380"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Center"
+              Margin="10,0,0,0">
+            <RichTextBox x:Name="PlayerAnswer"
+                         FontSize="15"
+                         FontFamily="Comic Sans MS">
+            </RichTextBox>
+        </Grid>
+        <Grid Height="400"
+              Width="380"
+              HorizontalAlignment="Right"
+              VerticalAlignment="Center"
+              Margin="0,0,10,0">
+            <Label x:Name = "QuestType"
+                   FontSize="20"
+                   FontFamily="Comic Sans MS"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,200">
+                 Переведите это слово:
+            </Label>
+            <Label x:Name = "QuestCount"
+                   FontSize="20"
+                   FontFamily="Comic Sans MS"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="300,100,0,0">
+                1\10
+            </Label>
+            <Label x:Name = "Score"
+                   FontSize="20"
+                   FontFamily="Comic Sans MS"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="0,100,0,0">
+                Счёт: 0
+            </Label>
+            <Label x:Name = "Mistakes"
+                   FontSize="20"
+                   FontFamily="Comic Sans MS"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="0,150,0,0">
+                Ошибки: 0
+            </Label>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden"
+                          HorizontalScrollBarVisibility="Visible"
+                          Height="70">
+                          <Label x:Name = "Quest"
+                                 FontSize="20"
+                                 FontFamily="Comic Sans MS"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center"
+                                 Margin="0,0,0,100">
+                              Это тестовое выражение!
+                          </Label>  
+            </ScrollViewer>
+            <Button Height="30"
+                    Width="120"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    FontFamily="Comic Sans MS"
+                    Click="NextQuestion">
+                ДАЛЕЕ
+            </Button>
+            <Line X1 = "0" Y1 = "0"
+                  X2 = "380" Y2 = "0"
+                  Stroke="Black"></Line>
+            <Line X1 = "0" Y1 = "400"
+                  X2 = "380" Y2 = "400"
+                  Stroke="Black"></Line>
+            <Line X1 = "380" Y1 = "0"
+                  X2 = "380" Y2 = "400"
+                  Stroke="Black"></Line>
+            <Line X1 = "0" Y1 = "0"
+                  X2 = "0" Y2 = "400"
+                  Stroke="Black"></Line>
+        </Grid>
     </Grid>
 </Window>

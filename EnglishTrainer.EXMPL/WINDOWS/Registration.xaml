@@ -3,10 +3,73 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:EnglishTrainer.EXMPL.WINDOWS"
+        ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Registration" Height="450" Width="800">
+        Title="Регистрация" Height="450" Width="380">
     <Grid>
-        
+        <Grid>
+             <Label HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0,0,0,300"
+                    FontSize="20"
+                    FontFamily="Comic Sans MS">
+                  Ваше имя:
+             </Label>
+             <TextBox x:Name="UserName"
+                      Height="28"
+                      Width="250"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Margin="0,0,0,200"
+                      FontFamily="Comic Sans MS">
+             </TextBox>   
+        </Grid>
+        <Grid>
+            <Label HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Margin="0,0,0,100"
+                   FontSize="20"
+                   FontFamily="Comic Sans MS">
+                Ваша фамилия:
+            </Label>
+            <TextBox x:Name="UserSurname"
+                     Height="28"
+                     Width="250"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     Margin="0,0,0,0"
+                     FontFamily="Comic Sans MS">
+            </TextBox>   
+        </Grid>
+        <Label HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Margin="0,100,0,0"
+               FontSize="20"
+               FontFamily="Comic Sans MS">
+            Ваш уровень английского:
+        </Label>
+        <ComboBox x:Name = "Level"
+                  Height="40"
+                  Width="200"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  FontFamily="Comic Sans MS"
+                  Margin="0,200,0,0">
+            <ComboBoxItem FontFamily="Comic Sans MS"
+            > Плохой </ComboBoxItem>
+            <ComboBoxItem FontFamily="Comic Sans MS"
+            > Средний </ComboBoxItem>
+            <ComboBoxItem FontFamily="Comic Sans MS"
+            > Высокий </ComboBoxItem>
+        </ComboBox>
+        <Button Height="30"
+                Width="200"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontFamily="Comic Sans MS"
+                Margin="0,350,0,0"
+                Click = "SaveUser">
+            СОХРАНИТЬ
+        </Button>
     </Grid>
 </Window>
