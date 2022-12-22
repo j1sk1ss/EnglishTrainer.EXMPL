@@ -8,6 +8,7 @@ using EnglishTrainer.EXMPL.WINDOWS;
 
 namespace EnglishTrainer.EXMPL {
     public partial class MainWindow {
+
         public MainWindow() {
             try {
                 InitializeComponent();
@@ -19,13 +20,29 @@ namespace EnglishTrainer.EXMPL {
             }
         }
         public User User { get; set; }
-
-        private void StartTrainer(object sender, RoutedEventArgs e) => new Trainer(new List<IQuest>(User.Level switch {
-            Level.Junior => Quests.LightQuests,
-            Level.Middle => Quests.MiddleQuests,
-            Level.Senior => Quests.HardQuests,
-            _ => Quests.LightQuests
-        }), User).Show();
+        
+        private void StartTrainer(object sender, RoutedEventArgs e) {
+            if (Quests.LightQuests.Count == 0 && User.Level == Level.Junior) {
+                MessageBox.Show("Заданий для вашего уровня навыкод не обнаружено!");
+                return;
+            }
+            if (Quests.MiddleQuests.Count == 0 && User.Level == Level.Middle) {
+                MessageBox.Show("Заданий для вашего уровня навыкод не обнаружено!");
+                return;
+            }
+            if (Quests.HardQuests.Count == 0 && User.Level == Level.Senior) {
+                MessageBox.Show("Заданий для вашего уровня навыкод не обнаружено!");
+                return;
+            }
+            
+            new Trainer(new List<IQuest>(User.Level switch
+            {
+                Level.Junior => Quests.LightQuests,
+                Level.Middle => Quests.MiddleQuests,
+                Level.Senior => Quests.HardQuests,
+                _ => Quests.LightQuests
+            }), User).Show();
+        }
 
         private void ChangeQuest(object sender, RoutedEventArgs e) => new Redactor().Show();
         private void Registration(object sender, RoutedEventArgs e) => new Registration(this).Show();

@@ -23,7 +23,8 @@
                 Click="SaveQuest">
             СОХРАНИТЬ
         </Button>
-        <ComboBox x:Name="Difficult"
+        <ComboBox SelectedIndex="1"
+                  x:Name="Difficult"
                   Height="25"
                   Width="200"
                   HorizontalAlignment="Left"

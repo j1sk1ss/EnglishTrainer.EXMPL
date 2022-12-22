@@ -8,8 +8,7 @@
         }
         public string Name { get; init; }
         public string Surname { get; init; }
-        public Level Level { get; set; }
-        
+        public Level Level { get; init; }
         public int MaxScore { get; set; }
     }
     public enum Level {

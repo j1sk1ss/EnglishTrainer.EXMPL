@@ -17,7 +17,7 @@ namespace EnglishTrainer.EXMPL.WINDOWS {
                 var lines = text.Split("\n", StringSplitOptions.RemoveEmptyEntries);
                 
                 if (lines.Length % 2 != 0) {
-                    MessageBox.Show("Введите корректнфе данные!");
+                    MessageBox.Show("Введите корректные данные!");
                     return;
                 }
                 
@@ -38,6 +38,8 @@ namespace EnglishTrainer.EXMPL.WINDOWS {
                             Quests.HardQuests.Add(new HardQuest().Set(lines[i], lines[i+1] ?? ""));
                         break;
                 }
+                
+                
             }
             catch (Exception exception) {
                 MessageBox.Show($"{exception}");
