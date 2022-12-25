@@ -23,15 +23,15 @@ namespace EnglishTrainer.EXMPL {
         
         private void StartTrainer(object sender, RoutedEventArgs e) {
             if (Quests.LightQuests.Count == 0 && User.Level == Level.Junior) {
-                MessageBox.Show("Заданий для вашего уровня навыкод не обнаружено!");
+                MessageBox.Show("Заданий для вашего уровня навыков не обнаружено!");
                 return;
             }
             if (Quests.MiddleQuests.Count == 0 && User.Level == Level.Middle) {
-                MessageBox.Show("Заданий для вашего уровня навыкод не обнаружено!");
+                MessageBox.Show("Заданий для вашего уровня навыков не обнаружено!");
                 return;
             }
             if (Quests.HardQuests.Count == 0 && User.Level == Level.Senior) {
-                MessageBox.Show("Заданий для вашего уровня навыкод не обнаружено!");
+                MessageBox.Show("Заданий для вашего уровня навыков не обнаружено!");
                 return;
             }
             

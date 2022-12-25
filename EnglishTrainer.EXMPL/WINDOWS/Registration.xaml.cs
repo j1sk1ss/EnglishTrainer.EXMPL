@@ -14,7 +14,7 @@ namespace EnglishTrainer.EXMPL.WINDOWS {
         private User User { get; }
         private void SaveUser(object sender, RoutedEventArgs e)
         {
-            MainWindow.UserName.Content = $"Приветсвую вас, {UserName.Text}";
+            MainWindow.UserName.Content = $"Приветствую вас, {UserName.Text}";
             
             MainWindow.User = new User {
                 Name = UserName.Text,
