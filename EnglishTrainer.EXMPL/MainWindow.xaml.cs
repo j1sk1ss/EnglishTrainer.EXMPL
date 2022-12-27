@@ -13,23 +13,15 @@ namespace EnglishTrainer.EXMPL {
             try {
                 InitializeComponent();
                 User = null;
-                UsersData.Users.Add(User);
+                UsersData.Users = new List<User>();
+                new Redactor().ReadQuests();
+                
             }
             catch (Exception e) {
                 MessageBox.Show($"{e}");
             }
         }
-        
-        public MainWindow(User user) {
-            try {
-                InitializeComponent();
-                User = user;
-            }
-            catch (Exception e) {
-                MessageBox.Show($"{e}");
-            }
-        }
-        
+
         public User User { get; set; }
         
         private void StartTrainer(object sender, RoutedEventArgs e) {
@@ -61,6 +53,13 @@ namespace EnglishTrainer.EXMPL {
 
         private void ChangeQuest(object sender, RoutedEventArgs e) => new Redactor().Show();
         private void Registration(object sender, RoutedEventArgs e) => new Registration(this).Show();
-        private void Leaders(object sender, RoutedEventArgs e) => new TopPlayers().Show();
+
+        private void Leaders(object sender, RoutedEventArgs e) {
+            if (User == null) {
+                MessageBox.Show("Зарегистрируйтесь!");
+                return;
+            }
+            new TopPlayers().Show(); 
+        } 
     }
 }

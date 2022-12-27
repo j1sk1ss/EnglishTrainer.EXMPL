@@ -11,12 +11,12 @@ namespace EnglishTrainer.EXMPL.WINDOWS {
             InitializeComponent();
         }
         private MainWindow MainWindow { get; }
-        private User User { get; }
-        private void SaveUser(object sender, RoutedEventArgs e)
-        {
+        private User User { get; set; }
+
+        private void SaveUser(object sender, RoutedEventArgs e) {
             MainWindow.UserName.Content = $"Приветствую вас, {UserName.Text}";
             
-            MainWindow.User = new User {
+            User = new User {
                 Name = UserName.Text,
                 Surname = UserSurname.Text,
                 Level = Level.Text switch {
@@ -27,8 +27,8 @@ namespace EnglishTrainer.EXMPL.WINDOWS {
                 }
             };
             
-            if (!UsersData.Users.Contains(User)) UsersData.Users.Add(MainWindow.User);
-            else UsersData.Users[UsersData.Users.IndexOf(User)] = MainWindow.User;
+            MainWindow.User = User;
+            UsersData.Users.Add(User);
             
             Close();
         }

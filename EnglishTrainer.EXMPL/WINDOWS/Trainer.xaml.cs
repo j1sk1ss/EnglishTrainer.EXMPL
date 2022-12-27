@@ -26,11 +26,11 @@ namespace EnglishTrainer.EXMPL.WINDOWS {
                 MessageBox.Show("Вы прошли тест!\n" +
                                 $"Ошибки: {_mistakes}");
                 User.MaxScore = _score;
-                new MainWindow(User).Show();
                 Close();
+                return;
             }
             var answer = new TextRange(PlayerAnswer.Document.ContentStart, PlayerAnswer.Document.ContentEnd).Text;
-            QuestCount.Content = $"{_position}/{MainQuests.Count}";
+            QuestCount.Content = $"{_position}/{MainQuests.Count - 1}";
             Quest.Content = MainQuests[_position].GetQuest();
             
             if (answer.Replace("\n", "") != MainQuests[_position - 1].GetAnswer()) {

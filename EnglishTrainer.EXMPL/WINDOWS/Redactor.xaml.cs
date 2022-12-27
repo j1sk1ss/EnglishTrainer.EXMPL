@@ -14,7 +14,7 @@ namespace EnglishTrainer.EXMPL.WINDOWS {
             ReadQuests();
         }
 
-        private static void ReadQuests() {
+        public void ReadQuests() {
             try {
                 if (File.Exists("Light.txt")) {
                    var lines = File.ReadAllText("Light.txt").Split("\n", StringSplitOptions.RemoveEmptyEntries);
