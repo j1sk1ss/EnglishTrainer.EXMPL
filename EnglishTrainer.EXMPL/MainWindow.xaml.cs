@@ -12,16 +12,31 @@ namespace EnglishTrainer.EXMPL {
         public MainWindow() {
             try {
                 InitializeComponent();
-                User = new User();
+                User = null;
                 UsersData.Users.Add(User);
             }
             catch (Exception e) {
                 MessageBox.Show($"{e}");
             }
         }
+        
+        public MainWindow(User user) {
+            try {
+                InitializeComponent();
+                User = user;
+            }
+            catch (Exception e) {
+                MessageBox.Show($"{e}");
+            }
+        }
+        
         public User User { get; set; }
         
         private void StartTrainer(object sender, RoutedEventArgs e) {
+            if (User == null) {
+                MessageBox.Show("Зарегистрируйтесь!");
+                return;
+            }
             if (Quests.LightQuests.Count == 0 && User.Level == Level.Junior) {
                 MessageBox.Show("Заданий для вашего уровня навыков не обнаружено!");
                 return;

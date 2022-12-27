@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,7 +11,35 @@ namespace EnglishTrainer.EXMPL.WINDOWS {
     public partial class Redactor {
         public Redactor() {
             InitializeComponent();
+            ReadQuests();
         }
+
+        private static void ReadQuests() {
+            try {
+                if (File.Exists("Light.txt")) {
+                   var lines = File.ReadAllText("Light.txt").Split("\n", StringSplitOptions.RemoveEmptyEntries);
+                   for (var i = 0; i < lines.Length - 1; i += 2) 
+                       Quests.LightQuests.Add(new LightQuest().Set(lines[i], lines[i+1] ?? "")); 
+                }
+                
+                if (File.Exists("Middle.txt")) { 
+                    var lines = File.ReadAllText("Middle.txt").Split("\n", StringSplitOptions.RemoveEmptyEntries);
+                    for (var i = 0; i < lines.Length - 1; i += 2) 
+                        Quests.MiddleQuests.Add(new MiddleQuest().Set(lines[i], lines[i+1] ?? ""));               
+                }
+                
+                if (File.Exists("Hard.txt")) {
+                    var lines = File.ReadAllText("Hard.txt").Split("\n", StringSplitOptions.RemoveEmptyEntries);
+                    for (var i = 0; i < lines.Length - 1; i += 2) 
+                        Quests.HardQuests.Add(new HardQuest().Set(lines[i], lines[i+1] ?? ""));                
+                }
+            }
+            catch (Exception e) {
+                MessageBox.Show($"{e}");
+            }
+            
+        }
+        
         private void SaveQuest(object sender, RoutedEventArgs e) {
             try {
                 var text = new TextRange(QuestBody.Document.ContentStart, QuestBody.Document.ContentEnd).Text;
@@ -20,26 +49,36 @@ namespace EnglishTrainer.EXMPL.WINDOWS {
                     MessageBox.Show("Введите корректные данные!");
                     return;
                 }
-                
+                var temp = "";
                 switch (Difficult.SelectionBoxItem) {
                     case "1 уровень":
                         Quests.LightQuests.Clear();
-                        for (var i = 0; i < lines.Length; i += 2)
+                        temp = "";
+                        for (var i = 0; i < lines.Length; i += 2) {
+                            temp += lines[i] + "\n" + lines[i + 1];
                             Quests.LightQuests.Add(new LightQuest().Set(lines[i], lines[i+1] ?? ""));
+                            File.WriteAllText("Light.txt", temp);
+                        }
                         break;
                     case "2 уровень":
                         Quests.MiddleQuests.Clear();
-                        for (var i = 0; i < lines.Length; i += 2)
+                        temp = "";
+                        for (var i = 0; i < lines.Length; i += 2) {
+                            temp += lines[i] + "\n" + lines[i + 1];
                             Quests.MiddleQuests.Add(new MiddleQuest().Set(lines[i], lines[i+1] ?? ""));
+                            File.WriteAllText("Middle.txt", temp);
+                        }
                         break;
                     case "3 уровень":
                         Quests.HardQuests.Clear();
-                        for (var i = 0; i < lines.Length; i += 2)
+                        temp = "";
+                        for (var i = 0; i < lines.Length; i += 2) {
+                            temp += lines[i] + "\n" + lines[i + 1];
                             Quests.HardQuests.Add(new HardQuest().Set(lines[i], lines[i+1] ?? ""));
+                            File.WriteAllText("Hard.txt", temp);
+                        }
                         break;
                 }
-                
-                
             }
             catch (Exception exception) {
                 MessageBox.Show($"{exception}");

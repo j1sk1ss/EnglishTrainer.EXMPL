@@ -26,7 +26,8 @@ namespace EnglishTrainer.EXMPL.WINDOWS {
                 MessageBox.Show("Вы прошли тест!\n" +
                                 $"Ошибки: {_mistakes}");
                 User.MaxScore = _score;
-                return;
+                new MainWindow(User).Show();
+                Close();
             }
             var answer = new TextRange(PlayerAnswer.Document.ContentStart, PlayerAnswer.Document.ContentEnd).Text;
             QuestCount.Content = $"{_position}/{MainQuests.Count}";
